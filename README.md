@@ -19,8 +19,8 @@ To run the app locally, follow these steps:
 1. **Clone the repository**:
 
    ```
-   git clone https://github.com/Sa1f27/Disease-Prediction.git
-   cd Disease-Prediction
+   git clone https://github.com/Chetankoliparthi/disease.git
+   cd Disease
    ```
 
 2. **Set up a virtual environment** (optional but recommended):
