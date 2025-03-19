@@ -4,6 +4,7 @@ import numpy as np
 import google.generativeai as genai
 
 # Configure Google Generative AI with your API key
+#get the key from the environment variable
 genai.configure(api_key="AIzaSyCcByBmbwkKKnhjwj4Bi2i0w9o9pqPVr3c")  # Replace with your actual API key
 
 def display():

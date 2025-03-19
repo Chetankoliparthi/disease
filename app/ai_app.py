@@ -10,6 +10,7 @@ import PyPDF2
 load_dotenv()
 # Configure Google Generative AI
 # Get API key from environment variable
+#get the key from the environment variable
 api_key = os.getenv("GENAI_API_KEY")
 
 # Define a function to read and extract text from PDF

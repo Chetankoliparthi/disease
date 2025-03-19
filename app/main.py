@@ -10,6 +10,7 @@ from ai_app import display as ai_display
 from ai_app import queries as ai_queries
 
 # Set the page configuration
+#get the key from the environment variable
 st.set_page_config(page_title="Disease Diagnostic App",page_icon="🏥", layout="wide")
 
 # Sidebar navigation

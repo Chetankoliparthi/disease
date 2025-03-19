@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 # Configure Google Generative AI
 # Get API key from environment variable
+#get the key from the environment variable
 api_key = os.getenv("GENAI_API_KEY")
 
 # Use the API key
