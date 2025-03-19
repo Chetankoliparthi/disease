@@ -67,7 +67,7 @@ To run the app locally, follow these steps:
 
 ## Technologies Used
 
-- **Streamlit**: For building the web interface.
+- **Streamlit**: For building the web interface
 - **Python**: Programming language for backend logic.
 - **Scikit-learn**: For machine learning models.
 - **Pandas**: For data manipulation and analysis.
