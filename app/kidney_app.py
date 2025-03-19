@@ -4,6 +4,7 @@ import numpy as np
 import google.generativeai as genai
 import os
 from dotenv import load_dotenv
+import pandas as pd
 load_dotenv()
 # Configure Google Generative AI
 # Get API key from environment variable
@@ -12,7 +13,17 @@ api_key = os.getenv("GENAI_API_KEY")
 
 # Use the API key
 genai.configure(api_key=api_key)
+hospitals_df = pd.read_csv("app/hospitals_india.csv")
+HOSPITALS_DATA = hospitals_df.to_dict("records")
+for hospital in HOSPITALS_DATA:
+    hospital["specialties"] = hospital["specialties"].split(":")
 
+# Function to get hospitals specializing in Liver
+def get_nearby_hospitals(selected_location):
+    hospitals = [h for h in HOSPITALS_DATA if h["location"] == selected_location and "Liver" in h["specialties"]]
+    if not hospitals:
+        return ["No liver-specialized hospitals found for this location."]
+    return [f"- **{h['name']}**: {h['address']} (Specialties: {', '.join(h['specialties'])})" for h in hospitals]
 
 def display():
     st.title("Kidney Disease Prediction App")
@@ -46,7 +57,8 @@ def display():
             specific_gravity = st.number_input("Specific Gravity", min_value=0.0, max_value=2.0, format="%.2f", value=1.02)
             albumin = st.number_input("Albumin", min_value=0, max_value=10, format="%d", value=3)
             red_blood_cells = st.number_input("Red Blood Cells", min_value=0, max_value=10, format="%d", value=5)
-
+        locations = sorted(set(h["location"] for h in HOSPITALS_DATA))
+        location = st.selectbox("Select your nearby location", options=locations, index=0)
         # Prepare feature array for prediction
         features = np.array([[blood_pressure, specific_gravity, albumin, blood_sugar,
                               blood_urea, hemoglobin, white_blood_cells, red_blood_cells]])
@@ -82,6 +94,10 @@ def display():
                     st.write("No response generated. Check your input.")
             except Exception as e:
                 st.error(f"An error occurred during AI response generation: {e}")
+            st.write(f"**Recommended Hospitals in {location} for Heart Disease:**")
+            hospitals = get_nearby_hospitals(location)
+            for hospital in hospitals:
+                st.markdown(hospital)
 
 if __name__ == '__main__':
     display()
