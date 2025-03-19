@@ -13,7 +13,7 @@ api_key = os.getenv("GENAI_API_KEY")
 
 # Use the API key
 genai.configure(api_key=api_key)
-hospitals_df = pd.read_csv(r"C:\Users\chetankoliparthi\Downloads\hospitals_india.csv")
+hospitals_df = pd.read_csv("hospitals_india.csv")
 HOSPITALS_DATA = hospitals_df.to_dict("records")
 for hospital in HOSPITALS_DATA:
     hospital["specialties"] = hospital["specialties"].split(":")
@@ -31,11 +31,11 @@ def display():
     # Load required resources
     try:
         # Load the scaler
-        with open(r"C:\Users\chetankoliparthi\OneDrive\Documents\projects\disease\predictors\diabetes_scaler.pkl", 'rb') as scaler_file:
+        with open(r"predictors\diabetes_scaler.pkl", 'rb') as scaler_file:
             scaler = pickle.load(scaler_file)
 
         # Load the KNN model
-        with open(r"C:\Users\chetankoliparthi\OneDrive\Documents\projects\disease\predictors\diabetes_knn.pkl", 'rb') as knn_file:
+        with open(r"predictors\diabetes_knn.pkl", 'rb') as knn_file:
             knn_model = pickle.load(knn_file)
     except FileNotFoundError:
         st.error("Error: Model or scaler file not found. Please check the file paths.")

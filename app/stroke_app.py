@@ -6,7 +6,7 @@ import pandas as  pd
 # Configure Google Generative AI with your API key
 #get the key from the environment variable
 genai.configure(api_key="AIzaSyCcByBmbwkKKnhjwj4Bi2i0w9o9pqPVr3c")  # Replace with your actual API key
-hospitals_df = pd.read_csv(r"C:\Users\chetankoliparthi\Downloads\hospitals_india.csv")
+hospitals_df = pd.read_csv("hospitals_india.csv")
 HOSPITALS_DATA = hospitals_df.to_dict("records")
 for hospital in HOSPITALS_DATA:
     hospital["specialties"] = hospital["specialties"].split(":")
@@ -24,13 +24,13 @@ def display():
 
     # Load the pre-fitted encoder, scaler, and KNN model
     try:
-        with open(r'C:\Users\chetankoliparthi\OneDrive\Documents\projects\disease\predictors\stroke_encoder.pkl', 'rb') as encoder_file:
+        with open(r'predictors\stroke_encoder.pkl', 'rb') as encoder_file:
             encoder = pickle.load(encoder_file)
 
-        with open(r'C:\Users\chetankoliparthi\OneDrive\Documents\projects\disease\predictors\stroke_scaler.pkl', 'rb') as scaler_file:
+        with open(r'predictors\stroke_scaler.pkl', 'rb') as scaler_file:
             scaler = pickle.load(scaler_file)
 
-        with open(r'C:\Users\chetankoliparthi\OneDrive\Documents\projects\disease\predictors\stroke_knn.pkl', 'rb') as model_file:
+        with open(r'predictors\stroke_knn.pkl', 'rb') as model_file:
             model = pickle.load(model_file)
     except FileNotFoundError:
         st.error("Model or scaler files not found. Please check the file paths.")
