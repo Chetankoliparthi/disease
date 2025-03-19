@@ -13,7 +13,7 @@ api_key = os.getenv("GENAI_API_KEY")
 
 # Use the API key
 genai.configure(api_key=api_key)
-hospitals_df = pd.read_csv("app/hospitals_india.csv")
+hospitals_df = pd.read_csv(r"C:\Users\chetankoliparthi\Downloads\hospitals_india.csv")
 HOSPITALS_DATA = hospitals_df.to_dict("records")
 for hospital in HOSPITALS_DATA:
     hospital["specialties"] = hospital["specialties"].split(":")
