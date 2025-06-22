@@ -11,7 +11,12 @@ This platform is designed to predict various diseases, including Heart Disease, 
 - **Stroke**: Checks the risk of stroke based on user information.
 - **AI Assistance**: Uses AI-powered tools to provide additional medical predictions and advice.
 - **Upload Medical Report**: Users can upload their medical reports for analysis and receive personalized health recommendations.
+- 
 ![Screenshot 2025-06-22 121845](https://github.com/user-attachments/assets/c82a9590-f918-40a6-8d13-c1fe5858d609)
+![Screenshot 2025-06-22 122018](https://github.com/user-attachments/assets/0f5a3573-bd39-4121-ae15-faf015127525)
+![Screenshot 2025-06-22 122052](https://github.com/user-attachments/assets/b00c3fb8-66db-43ef-8104-691788ab9215)
+
+
 ## Installation
 
 To run the app locally, follow these steps:
